@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="codeGen">
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<script src="codeGen.js"></script>
+<script src="test.js"></script>
+<link rel="stylesheet" href="codeGen.css">
+
+</head>
+<body ng-controller="IndexController">
+
+	<div id="tbl-list-container" class="col-md-4">
+		<div id="tbl-list" class="col-md-12">
+			<div class="col-md-12 tbl" ng-repeat="tbl in metadata">
+				<div class="col-md-12 tbl-name {{tbl.$expanded}}">
+					<span class="glyphicon glyphicon-ok chk-box {{tbl.$selected ? 'selected':''}}" ng-click="tbl.$selected=!tbl.$selected"></span>
+					<span class="glyphicon glyphicon-plus" ng-if="tbl.$expanded!='expanded'" ng-click="tbl.$expanded=tbl.$expanded=='expanded'?'':'expanded'"></span>
+					<span class="glyphicon glyphicon-minus" ng-if="tbl.$expanded=='expanded'" ng-click="tbl.$expanded=tbl.$expanded=='expanded'?'':'expanded'"></span>
+					<span  ng-click="tbl.$selected=!tbl.$selected" ng-dblclick="tbl.$expanded=tbl.$expanded=='expanded'?'':'expanded'">{{tbl.properties.TABLE_NAME}}</span>
+				</div>
+				<div class="col-md-12 tbl-cols">
+					<div class="col-md-12 tbl-col" ng-repeat="col in tbl.columns">
+						<span>{{col.properties.COLUMN_NAME}}</span>
+						<span class="open-square">[</span>
+						<span class="within-square">{{col.properties.TYPE_NAME}}</span>
+						<span class="within-square">, {{col.properties.COLUMN_SIZE}}</span>
+						<span class="within-square"ng-if="col.properties.IS_NULLABLE=='YES'">, Nullable</span>
+						<span class="close-square">]</span>
+					</div>
+				</div> 
+			</div>
+		</div>
+		<div class="btn-group col-md-12" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default" ng-click="expandAllTbls()">Expand All</button>
+		  <button type="button" class="btn btn-default" ng-click="collapseAllTbls()">Collapse All</button>
+		  <button type="button" class="btn btn-default" ng-click="selectAllTbls()">Select All</button>
+		  <button type="button" class="btn btn-default" ng-click="selectNoneTbls()">Select None</button>
+		</div>
+	</div>
+</body>
+</html>

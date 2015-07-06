@@ -1,0 +1,86 @@
+body {
+	font-size: 10pt; 
+}
+
+#tbl-list {
+	max-height: 500px;
+	overflow: auto;
+	border-bottom: 1px solid lightgray; 
+	border-top: 1px solid lightgray; 
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:5px;
+	padding:0px;
+}
+
+#tbl-list .tbl {
+	border:1px solid lightgrey;
+	border-top: none;
+	padding-top:2px;
+	padding-bottom:2px;
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
+#tbl-list .tbl-name {
+	cursor: pointer;
+	color: darkolivegreen;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+#tbl-list .tbl-name .glyphicon {
+	cursor: pointer;
+	color: orange;
+	margin-left: 18px;
+}
+#tbl-list .tbl-cols {
+	display: none;
+}
+#tbl-list .tbl-name.expanded~.tbl-cols {
+	display: block;
+}
+#tbl-list .tbl-cols {
+	padding-left: 35px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+}
+#tbl-list .tbl-cols .tbl-col {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	color: steelblue;
+	font-size: 8.5pt;
+	font-weight: normal;
+}
+
+#tbl-list .tbl-cols .tbl-col .open-square,
+#tbl-list .tbl-cols .tbl-col .close-square,
+#tbl-list .tbl-cols .tbl-col .within-square {
+	color: darkgoldenrod;
+}
+#tbl-list .tbl-cols .tbl-col .open-square {
+	padding-left: 8px;
+}
+
+#tbl-list .tbl-name .chk-box2 {
+	border:1px solid steelblue;
+	position: absolute;
+	box-sizing: border-box;
+	width: 16px;
+	height: 15px;
+	margin-top: 3px;
+	margin-left: -2px;
+	z-index: 999;
+}
+#tbl-list .chk-box.glyphicon.selected {
+	color: #4C9ED9;
+}
+#tbl-list .chk-box.glyphicon {
+	border:1px solid steelblue;
+	color: #FFF;
+	cursor: pointer;
+	position: absolute;
+	padding: 1px;
+	margin-top: 2px;
+	left: -5px;
+	font-size: 8pt;
+}
